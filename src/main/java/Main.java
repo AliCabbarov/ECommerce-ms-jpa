@@ -17,28 +17,6 @@ public class Main {
 
     public static void main(String[] args) {
         new ManagementImpl().manage();
-//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("postgres");
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        EntityTransaction entityTransaction = entityManager.getTransaction();
-//
-//        entityTransaction.begin();
-//
-//
-//
-//        entityTransaction.commit();
-
-//        System.out.println(LocalDate.now());
-//        ProductRepository productRepository = new ProductRepositoryImpl();
-//
-//
-//        Order order = Order.builder()
-//                .address("baku")
-//                .products(List.of(productRepository.findById(7).get()))
-//                .build()    ;
-//        System.out.println(order);
-//
-//        OrderRepository orderRepository = new OrderRepositoryImpl();
-//        orderRepository.createOrder(order);
     }
 
 

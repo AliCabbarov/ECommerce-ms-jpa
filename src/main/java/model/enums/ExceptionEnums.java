@@ -17,7 +17,9 @@ public enum ExceptionEnums {
     BRAND_NOT_FOUND("brand not found"),
     CATEGORY_NOT_FOUND("category not found"),
     USER_NOT_FOUND("user not found"),
-    WRONG_USERNAME_OR_PASSWORD_EXCEPTION("wrong username or password"), INVALID_OPTION_EXCEPTION("invalid option");
+    WRONG_USERNAME_OR_PASSWORD_EXCEPTION("wrong username or password"),
+    INVALID_OPTION_EXCEPTION("invalid option"),
+    LOW_MONEY_EXCEPTION("low money");
     private final String message;
 
     ExceptionEnums(String message) {

@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 
         long id = InputUtil.getInstance().inputLong("Enter the product id for delete: ");
 
-        Product product = productRepository.findById(id).orElseThrow(() -> new ApplicationException(ExceptionEnums.PRODUCT_NOT_FOUND));
+        Product product = productRepository.findById(id).orElseThrow(() -> new  ApplicationException(ExceptionEnums.PRODUCT_NOT_FOUND));
         product.setStatus(false);
 
         productRepository.updateProduct(product);

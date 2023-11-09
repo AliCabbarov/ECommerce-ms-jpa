@@ -6,7 +6,8 @@ public class MenuUtil {
                 "[1] - > Category \n" +
                 "[2] - > Brand\n" +
                 "[3] - > Product\n" +
-                "[3] - > Back\n");
+                "[4] - > Order\n" +
+                "[5] - > Back");
 
         return InputUtil.getInstance().inputByte("choose option: ");
 

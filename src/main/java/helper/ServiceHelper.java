@@ -1,6 +1,8 @@
 package helper;
 
 import model.entity.*;
+import model.enums.ExceptionEnums;
+import model.exception.ApplicationException;
 import service.BrandService;
 import service.CategoryService;
 import service.impl.BrandServiceImpl;
@@ -93,7 +95,7 @@ public class ServiceHelper {
         String fin = InputUtil.getInstance().inputString("Enter the fin: ");
         String address = InputUtil.getInstance().inputString("address: ");
         String email = InputUtil.getInstance().inputString("Enter the email: ");
-        String password = InputUtil.getInstance().inputString("Enter the passwordL: ");
+        String password = InputUtil.getInstance().inputString("Enter the password: ");
         String phoneNumber = InputUtil.getInstance().inputString("Enter the phone number: ");
 
         User user = User.builder()
@@ -113,5 +115,11 @@ public class ServiceHelper {
 
 
 
+    }
+
+    public static void checkUserAccount(User user, BigDecimal totalAmount) {
+        if (user.getAccount().doubleValue() < totalAmount.doubleValue()){
+            throw new ApplicationException(ExceptionEnums.LOW_MONEY_EXCEPTION);
+        }
     }
 }

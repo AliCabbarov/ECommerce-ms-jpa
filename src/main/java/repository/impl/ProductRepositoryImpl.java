@@ -31,7 +31,10 @@ public class ProductRepositoryImpl extends RepositoryConfig implements ProductRe
 
     @Override
     public Optional<Product> findById(long id) {
-        return Optional.ofNullable(getEntityManager().find(Product.class,id));
+        TypedQuery<Product> productTypedQuery = getEntityManager().createQuery("select p from _product p where status = true and remainCount > 0 and id = :id", Product.class);
+        productTypedQuery.setParameter("id",id);
+
+        return Optional.ofNullable(productTypedQuery.getSingleResult());
     }
 
     @Override

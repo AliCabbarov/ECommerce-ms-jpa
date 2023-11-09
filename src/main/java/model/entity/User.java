@@ -44,7 +44,7 @@ public class User {
 
     public void setFin(String fin) {
         if (fin.length() == 7){
-            this.fin = fin;
+            this.fin = fin.toUpperCase();
         }else throw new ApplicationException(ExceptionEnums.WRONG_FIN_EXCEPTION);
     }
 
@@ -72,11 +72,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", birthdate=" + birthdate +
-                ", fin='" + fin + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", account=" + account +
                 ", address='" + address + '\'' +
-                ", cart=" +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package service.impl;
 
+import helper.ServiceHelper;
 import model.entity.Cart;
 import model.entity.Product;
 import model.entity.User;
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     public void addProductToCart(User user) {
         showAllProduct();
 
-        Product product = productService.findById(ADD,false);
+        Product product = productService.findById(ADD, false);
 
         Cart cart = user.getCart();
 
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
         }
         cartService.showAllProductInCart(user);
 
-        Product product = productService.findById(DELETE,false);
+        Product product = productService.findById(DELETE, false);
         Cart cart = user.getCart();
 
         cartService.deleteProductToCart(cart, product);
@@ -61,29 +62,30 @@ public class UserServiceImpl implements UserService {
 
         Cart cart = user.getCart();
 
+        ServiceHelper.checkUserAccount(user, cart.getTotalAmount());
 
 
         cartService.showAllProductInCart(user);
 
         try {
-            Product product = productService.findById(COMMENT_AND_STARS,false);
+            Product product = productService.findById(COMMENT_AND_STARS, false);
 
             String comment = InputUtil.getInstance().inputString("comment: ");
             byte star = Byte.parseByte(InputUtil.getInstance().inputString("Enter star point: "));
 
 
-            productService.updateProduct(product,comment,star);
+            productService.updateProduct(product, comment, star);
 
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
 
 
-        productService.decreaseRemainCount(cart.getProducts()); // subtract for product's remainCount
+        productService.decreaseRemainCount(cart.getProducts());
 
         companyService.updateAccountCompany(cart.getTotalAmount());
 
-        updateAccount(user,cart.getTotalAmount());
+        updateAccount(user, cart.getTotalAmount());
 
         orderService.createOrder(user);
 
@@ -110,7 +112,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateAccount(User user,BigDecimal price) {
+    public void updateAccount(User user, BigDecimal price) {
         user.setAccount(user.getAccount().subtract(price));
         userRepository.updateUser(user);
     }
